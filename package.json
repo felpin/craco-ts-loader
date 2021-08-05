@@ -1,16 +1,15 @@
 {
-  "name": "craco-babel-loader",
-  "version": "0.1.4",
-  "description": "Rewire `babel-loader` loader in your `create-react-app` project using `craco`.",
+  "name": "craco-ts-loader",
+  "version": "0.1.0",
+  "description": "Rewire `ts-loader` loader in your `create-react-app` project using `craco`.",
   "source": "src/index.js",
   "module": "dist/index.es.js",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
-  "repository": "https://github.com/rjerue/craco-babel-loader",
+  "repository": "https://github.com/felpin/craco-ts-loader",
   "author": {
-    "name": "Ryan Jerue",
-    "email": "ryan@jerue.org",
-    "url": "http://jerue.org"
+    "name": "Felipe Pinheiro",
+    "email": "felipe.pinheiro.90@hotmail.com"
   },
   "license": "MIT",
   "eslintConfig": {
@@ -33,7 +32,7 @@
     "flow": "flow"
   },
   "keywords": [
-    "babel-loader",
+    "ts-loader",
     "craco",
     "webpack",
     "create-react-app"

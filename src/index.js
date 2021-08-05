@@ -30,8 +30,8 @@ const getArray = (source: ?Condition): Array<Condition> => {
     return Array.isArray(source) ? source : [source];
 };
 
-const include = (babel_loader: LoaderRule, ...includes: Array<Condition>) => {
-    const include_config = getArray(babel_loader.include);
+const include = (ts_loader: LoaderRule, ...includes: Array<Condition>) => {
+    const include_config = getArray(ts_loader.include);
 
     includes = includes.reduce((accumulator, include) => {
         if (Array.isArray(include)) {
@@ -42,11 +42,11 @@ const include = (babel_loader: LoaderRule, ...includes: Array<Condition>) => {
         return accumulator;
     }, include_config);
 
-    babel_loader.include = includes;
+    ts_loader.include = includes;
 };
 
-const exclude = (babel_loader: LoaderRule, ...excludes: Array<Condition>) => {
-    const exclude_config = getArray(babel_loader.exclude);
+const exclude = (ts_loader: LoaderRule, ...excludes: Array<Condition>) => {
+    const exclude_config = getArray(ts_loader.exclude);
 
     excludes = excludes.reduce((accumulator, exclude) => {
         if (Array.isArray(exclude)) {
@@ -57,11 +57,11 @@ const exclude = (babel_loader: LoaderRule, ...excludes: Array<Condition>) => {
         return accumulator;
     }, exclude_config);
 
-    babel_loader.exclude = excludes;
+    ts_loader.exclude = excludes;
 };
 
 export const overrideWebpackConfig = ({ webpackConfig, pluginOptions: {includes = [], excludes = []}}) => {
-    const { isFound, match } = getLoader(webpackConfig, loaderByName("babel-loader"));
+    const { isFound, match } = getLoader(webpackConfig, loaderByName("ts-loader"));
     if(isFound){
         includes.forEach(path => include(match.loader, path))
         excludes.forEach(path => exclude(match.loader, path))

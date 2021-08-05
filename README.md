@@ -1,22 +1,19 @@
-This is a port of [react-app-rewire-babel-loader](https://github.com/dashed/react-app-rewire-babel-loader) to [`CRACO`](https://github.com/sharegate/craco) instead of [react-app-rewired](https://github.com/timarney/react-app-rewired). `react-app-rewired` is not being updated for version 2 of CRA, and I wanted to use the rewired babel loader with a solution designed for CRA 2.
+# Craco TS Loader
 
-> Rewire [`babel-loader`](https://github.com/babel/babel-loader) loader in your [`create-react-app`](https://github.com/facebookincubator/create-react-app) project using [`CRACO`](https://github.com/sharegate/craco).
+This is an adaptation of [craco-babel-loader](https://github.com/rjerue/craco-babel-loader), but for [ts-loader](https://github.com/TypeStrong/ts-loader).
 
-Say there is an awesome library you found on npm that you want to use within your **un-ejected**  [`create-react-app`](https://github.com/facebookincubator/create-react-app) project, but unfortunately, it's published in ES6+ (since `node_modules` doesn't go through `babel-loader`), so you cannot *really* use it.
+If you are here, you've followed the [use-ts-loader](https://github.com/gsoft-inc/craco/blob/master/recipes/use-ts-loader/craco.config.js) recipe, but things are not working as expected and your `craco.config.js` imports [craco-babel-loader](https://github.com/rjerue/craco-babel-loader).
 
-However, with [`CRACO`](https://github.com/sharegate/craco) and this library, `craco-babel-loader`, you can use that awesome library you've found.
-
-See below for usage.
+**NOTE: The text below was adapted from [craco-babel-loader](https://github.com/rjerue/craco-babel-loader)**
 
 ## Install
 
-
 ```sh
-$ yarn add craco-babel-loader
+$ yarn add craco-ts-loader
 # npm v5+
-$ npm install craco-babel-loader
+$ npm install craco-ts-loader
 # before npm v5
-$ npm install --save craco-babel-loader
+$ npm install --save craco-ts-loader
 ```
 
 ## Usage
@@ -28,7 +25,7 @@ $ npm install --save craco-babel-loader
 const path = require("path");
 const fs = require("fs");
 
-const rewireBabelLoader = require("craco-babel-loader");
+const rewireTsLoader = require("craco-ts-loader");
 
 // helpers
 
@@ -38,7 +35,7 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 module.exports = {
   plugins: [
         //This is a craco plugin: https://github.com/sharegate/craco/blob/master/packages/craco/README.md#configuration-overview
-        { plugin: rewireBabelLoader, 
+        { plugin: rewireTsLoader, 
           options: { 
             includes: [resolveApp("node_modules/isemail")], //put things you want to include in array here
             excludes: [/(node_modules|bower_components)/] //things you want to exclude here
